@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{movie.img.url}}" width="300" height="450">
+        </div>
+        <div class="col-md-6">
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                      <th scope="col">Movie name:</th>
+                      <th scope="col">{{movie.name}}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">Release date:</th>
+                      <td>{{movie.year}}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Description:</th>
+                      <td>{{movie.desc}}</td>
+
+                    </tr>
+                    <tr>
+                      <th scope="row">Movie App id:</th>
+                      <td colspan="2">{{movie.id}}</td>
+                    </tr>
+                  </tbody>
+            </table>
+            <a class="btn btn-warning" href="{% url 'MUV:update' movie.id %}">Update</a>
+            <a class="btn btn-danger" href="{% url 'MUV:delete' movie.id%}">Delete</a>
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

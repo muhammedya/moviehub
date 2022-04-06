@@ -1,0 +1,7 @@
+<title>To delete {{movie.name}}</title>
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <h2>Are you want to delete, {{maovie.name}} ?</h2>
+  <input class="btn btn-danger" type="submit">
+
+</form>
