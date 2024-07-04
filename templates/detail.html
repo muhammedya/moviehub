@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+
+<!-- 
+✅
+<div class="container">
+    <div class="row mt-5 p-5 opacity-95 shadow" style="background-color: white;">
+        <div class="col-md-6 center">
+-->
+
+
+<!-- 
+❎
+<div class="container my-5">
+    <div class="row mt-5 p-5 opacity-95 shadow rounded" style="background-color: white;">
+        <div class="col-md-6 d-flex justify-content-center align-items-center">
+        
+        -->
+
+
+
+        <div class="container">
+          <div class="row mt-5 p-5 opacity-95 shadow" style="background-color: white;">
+              <div class="col-md-6 center">
+            {% if movie.img %}
+                <img src="{{ movie.img.url }}" class="img-fluid rounded" alt="{{ movie.name }}" style="max-width: 75%; height: auto;">
+            {% else %}
+                <p class="text-center">No image found</p>
+            {% endif %}
+        </div>
+        <div class="col-md-6">
+            <table class="table table-borderless">
+                <thead>
+                    <tr>
+                        <th scope="col">Movie Name:</th>
+                        <td>{{ movie.name }}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Release Date:</th>
+                        <td>{{ movie.year }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Description:</th>
+                        <td>{{ movie.desc }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Movie App ID:</th>
+                        <td>{{ movie.id }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="d-flex mt-3">
+                <a class="btn btn-primary" href="{% url 'MUV:update' movie.id %}">Update</a> &nbsp; 
+                <form method="POST" enctype="multipart/form-data" class="d-inline">
+                    {% csrf_token %}
+                    <!-- confermation page for deleting  -->
+                    <a class="btn btn-danger" href="{% url 'MUV:delete' movie.id%}">Delete</a>
+                                        <!-- forcesd delete from detail page.
+                    <input class="btn btn-danger" type="submit" value="Delete"> &nbsp; -->
+                    <a  class="btn btn-primary" data-mdb-ripple-init href="/">Cancel</a> &nbsp;
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

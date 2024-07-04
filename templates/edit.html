@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<title>Add new movie</title>
+
+<div class="container">
+    <div class="row mt-5 p-5 opacity-95 shadow" style="background-color: white;">
+        <div class="col-md-6 center">
+            {% if movie.img %}
+            <img src="{{ movie.img.url }}" class="img-fluid rounded" alt="{{ movie.name }}" style="max-width: 75%; height: auto;">
+            {% else %}
+            <p>no img fond</p>
+            {% endif %}
+        </div>
+              <div class="col-md-6 center">
+                  <form class="center" method="post" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      <div class="form-group center">
+                          <label for="exampleInputEmail1">Movie name</label>
+                          <input type="text" name="name" class="form-control" value="{{movie.name}}" required>
+                      </div>
+                      <div>
+                          <label for="exampleInputEmail1">Releasing Year:</label>
+                          <input type="number" name="year" class="form-control" value="{{movie.year}}" pattern="[0-9]" min="1900" max="2030" required>
+                      </div>
+                      <div>
+                          <label for="exampleInputEmail1">Storyline Description:</label>
+                          <textarea name="desc" class="form-control" cols="30" rows="10" required>{{movie.desc}}</textarea>
+                      </div>
+                      <div>
+                          <label for="exampleInputEmail1">Add image:</label>
+                          <input type="file" name="img" class="form-control">   <!-- value="{{movie.img}}" -->
+                          <!-- <input type="file" name="img" class="form-control" required> -->
+                      </div>
+                      <button type="submit" class="btn btn-primary mt-2">Add Now</button>
+                      <a  class="btn btn-danger" data-mdb-ripple-init href="/">Cansel</a>
+                    </form>
+              </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

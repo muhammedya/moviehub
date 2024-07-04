@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<title>Add New Movie</title>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow opacity-95" style="background-color: white;">
+                <div class="card-body">
+                    <h3 class="card-title text-center mb-4">Add a New Movie</h3>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group mb-3">
+                            <label for="movieName">Movie Name</label>
+                            <input type="text" name="name" class="form-control" id="movieName" placeholder="e.g., Premalu" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="releaseYear">Releasing Year</label>
+                            <input type="number" name="year" class="form-control" id="releaseYear" placeholder="e.g., 2024" pattern="[0-9]{4}" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="movieDescription">Storyline Description</label>
+                            <textarea name="desc" class="form-control" id="movieDescription" cols="30" rows="4" placeholder="e.g., The blood-soaked land of Kolar Gold Fields (KGF) has a new overlord now - Rocky..." required></textarea>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="movieImage">Add Image</label>
+                            <input type="file" name="img" class="form-control" id="movieImage">
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Add Now</button> &nbsp;
+                            <a class="btn btn-warning mr-2" href="/">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        {% for i in movie_list %}
+        <div class="col-xl-3 col-md-4 col-sm-6 .col-12 d-flex justify-content-start mt-2">
+          <!--start-->
+          <div class="card shadow server-action-menu mb-5" style="width: 22rem; background-color: white;">
+            <img src="{{i.img.url}}" class="card-img-top" alt="{{i.name}}" width="150" height="300">
+            <div class="card-body">
+              <h5 class="card-title">{{ i.name }} ({{ i.year }})</h5>
+              <p class="card-text">{{i.desc|truncatechars:50}}</p>
+              <a href="{% url 'MUV:detail' i.id %}" class="btn btn-primary">{{i.name}}</a>
+            </div>
+          </div>
+          <!--end-->
+        </div>
+        {% endfor %}
+        
+        <!-- SweetAlert -->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script>
+        {% for msg in messages %}
+            swal("Deleted.!", "{{msg}}", "success");
+        {% endfor %}
+        </script>
+    </div>
+</div>
+{% endblock %}
