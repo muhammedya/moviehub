@@ -1,4 +1,4 @@
-# # Django Movie Review App
+# Django Movie Review App
 
 ## Project Description:
 
@@ -17,21 +17,25 @@ To set up the project, follow these steps:
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/knowsuchagency/pdf-to-podcast.git
-   cd pdf-to-podcast
+   git clone https://github.com/muhammedya/moviehub/tree/master
+   cd moviepro
    ```
 
-2. **Create a virtual environment and activate it:**
+2.1 **Create a virtual environment and activate it:(on Linux or Mac)**
    ```bash
    python -m venv .venv
    source .venv/bin/activate
+   ```
+2.2 **Create a virtual environment and activate it:(on Windows)**
+   ```bash
+   virtualenv venv
+   venv/Scripts/activate
    ```
 
 3. **Install the required packages:**
    ```bash
    pip install -r requirements.txt
    ```
-
 
 4. **Apply Migrations:**
    ```bash
